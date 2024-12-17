@@ -77,6 +77,8 @@ services:
       MINIO_ROOT_PASSWORD: minio123
       MINIO_DOMAIN: minio
     command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
 
   minio-job:
     image: 'minio/mc'
@@ -448,3 +450,6 @@ services:
 networks:
   default:
     name: lakehouse
+
+volumes:
+  minio-data:
